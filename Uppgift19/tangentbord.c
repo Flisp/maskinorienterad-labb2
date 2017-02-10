@@ -16,11 +16,12 @@
     
 }
 
+/*bitmönster i rätt ordning (från 0 till 15) för att visa en siffra på 7SegDisplay*/
+static const uint8_t bit_patterns []= {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71}; 
+
 /*visa rätt siffra på display. En siffra(c) skickas in och den siffran ska visas på displayen*/
 void out7Seg(uint8_t c)
 {  
-    /*bitmönster i rätt ordning (från 0 till 15) för att visa en siffra på 7SegDisplay*/
-    const uint8_t bit_patterns []= {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71}; 
     if (c < 0 || c > 15)
     {
         GPIO_D.odr_low = 0x00;   /*om det är fel, visar ingenting*/
@@ -29,12 +30,12 @@ void out7Seg(uint8_t c)
         GPIO_D.odr_low = bit_patterns[c];   /*c är index för arreyen.*/
 }
 
+/*array med bittarnas värde: bit 4,5,6,7 för respektive rad med 1,4,7,*. Om 0 inga bitar satta*/
+static const uint8_t row_a[] = {0x00, 0x10, 0x20, 0x40, 0x80 };    
+
 /*den aktiverar en rad, sätt spänning på "kablarna". Row är ett värde som kan vara 1,2,3,4 eller 0*/
 void kbd_activate(uint32_t row)
 {   
-    /*array med bittarnas värde: bit 4,5,6,7 för respektive rad med 1,4,7,*. Om 0 inga bitar satta*/
-    const uint8_t row_a[] = {0x00, 0x10, 0x20, 0x40, 0x80 };    
-    
     GPIO_D.odr_high = row_a [row];    
 }
 
@@ -49,11 +50,12 @@ int kbd_col (void)
     return 0; 
 }
 
+/*array med tangentkoder (1,2,3,A,4,5,6,B...) som i figuren*/
+static const uint8_t Key[]={ 1,2,3,0xa,4,5,6,0xb,7,8,9,0xc,0xe,0,0xf,0xd };
+
 /*huvudfunktionen för tangentbord*/
 uint8_t Keyb (void)
 {
-    /*array med tangentkoder (1,2,3,A,4,5,6,B...) som i figuren*/
-    uint8_t Key[]={ 1,2,3,0xa,4,5,6,0xb,7,8,9,0xc,0xe,0,0xf,0xd};
     uint32_t row, col; 
     
     /*loopa igenom raderna. Vi börjar med rad 1*/
