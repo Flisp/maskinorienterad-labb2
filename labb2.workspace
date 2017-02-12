@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="labb2" Database="">
+  <Project Name="Uppgift19" Path="Uppgift19/Uppgift19.project" Active="No"/>
+  <Project Name="uppgiftKap5" Path="uppgiftKap5/uppgiftKap5.project" Active="No"/>
+  <Project Name="asciiDisplay" Path="asciiDisplay/asciiDisplay.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="Uppgift19" ConfigName="Debug"/>
+      <Project Name="uppgiftKap5" ConfigName="Debug"/>
+      <Project Name="asciiDisplay" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="no">
+      <Environment/>
+      <Project Name="Uppgift19" ConfigName="Release"/>
+      <Project Name="uppgiftKap5" ConfigName="Release"/>
+      <Project Name="asciiDisplay" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Simulator" Selected="no">
+      <Environment/>
+      <Project Name="asciiDisplay" ConfigName="Debug"/>
+      <Project Name="Uppgift19" ConfigName="Debug"/>
+      <Project Name="uppgiftKap5" ConfigName="Simulator"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

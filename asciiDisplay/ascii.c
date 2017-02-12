@@ -90,7 +90,7 @@ void ascii_command (uint8_t command, uint32_t delay)
 void ascii_init()
 {
     GPIO_E.moder = 0x55555555; 
-    RCC_AHB1ENR |= RCC_GPIO_E;   /*aktivera klockan för port D*/
+    RCC_AHB1ENR |= RCC_GPIO_E;   /*aktivera klockan för port E*/
     GPIO_E.otyper = 0xffff;       /*open drain*/
     
     ascii_command(0x38, 39000);/*för att ha 2 rader och en viss storlek, måste kommandot function set vara 0011 1000 alltså N=1, F=0*/
