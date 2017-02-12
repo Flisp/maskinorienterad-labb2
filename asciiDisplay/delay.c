@@ -1,8 +1,6 @@
 #include "gpio.h"
 #include "timer.h"
 
-
-/*temporärt lösning*/
 void delay_ns(uint32_t ns)
 {
     SYS_TICK.ctrl &= 0xfffffff8; /*nolställa bit 0,1,2. Återställa systick*/
