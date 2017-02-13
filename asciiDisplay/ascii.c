@@ -83,8 +83,8 @@ void ascii_command (uint8_t command, uint32_t delay)
 
 void ascii_init()
 {
-    GPIO_E.moder = 0x55555555; 
     RCC_AHB1ENR |= RCC_GPIO_D | RCC_GPIO_E;   /*aktivera klockan för port D och E*/
+    GPIO_E.moder = 0x55555555; 
     GPIO_E.otyper = 0x0000;       /*push/pull*/
     GPIO_E.ospeedr = 0x55555555;
     GPIO_E.pupdr = 0;
