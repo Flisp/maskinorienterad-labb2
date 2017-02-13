@@ -34,6 +34,7 @@ void main()
     {
         ascii_write_char(*(s++)); 
     }
+    
     ascii_gotoxy(1,2); 
     s= test_2; 
     

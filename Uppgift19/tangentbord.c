@@ -6,14 +6,15 @@
      void app_init(void)
 {
     const uint32_t Kbd_Disp_pinmode = 0x55005555; 
-    const uint16_t Kbd_Disp_otype = 0x0fff;       /*utpinnarna till tangentbordet ställs som pushpull, alla andra open-drain*/
+    const uint16_t Kbd_Disp_otype = 0x0000;       /*alla pinnar ställs som pushpull*/
     const uint32_t Kbd_Disp_pupd = 0x00aa0000;    /*inpinnar från kolumnerna pulluppulldow*/
-    RCC_AHB1ENR |= RCC_GPIO_D;   /*aktivera klockan för port D*/
+    
+    RCC_AHB1ENR = RCC_CCMDATARAMEN | RCC_GPIO_D;   /*aktivera klockan för port D*/
 
     GPIO_D.moder = Kbd_Disp_pinmode;     /*skrivning*/
     GPIO_D.otyper = Kbd_Disp_otype;
     GPIO_D.pupdr = Kbd_Disp_pupd;
-    
+
 }
 
 /*bitmönster i rätt ordning (från 0 till 15) för att visa en siffra på 7SegDisplay*/
@@ -30,13 +31,15 @@ void out7Seg(uint8_t c)
         GPIO_D.odr_low = bit_patterns[c];   /*c är index för arreyen.*/
 }
 
-/*array med bittarnas värde: bit 4,5,6,7 för respektive rad med 1,4,7,*. Om 0 inga bitar satta*/
-static const uint8_t row_a[] = {0x00, 0x10, 0x20, 0x40, 0x80 };    
-
 /*den aktiverar en rad, sätt spänning på "kablarna". Row är ett värde som kan vara 1,2,3,4 eller 0*/
 void kbd_activate(uint32_t row)
-{   
-    GPIO_D.odr_high = row_a [row];    
+{
+    if (row < 1 || row > 4) return;
+    
+    uint32_t pattern = (1 << (3 + row));    /* row = 1 : ettställ bit 4 */
+    
+    GPIO_D.odr_high &= 0x0f;        /* Skriver ingenting till IN-pinnarna! */
+    GPIO_D.odr_high |= pattern;
 }
 
 /*läsa av om någon knapp på den aktiva raden är nertrykt */

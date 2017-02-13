@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="labb2" Database="">
   <Project Name="Uppgift19" Path="Uppgift19/Uppgift19.project" Active="No"/>
-  <Project Name="uppgiftKap5" Path="uppgiftKap5/uppgiftKap5.project" Active="No"/>
-  <Project Name="asciiDisplay" Path="asciiDisplay/asciiDisplay.project" Active="Yes"/>
+  <Project Name="uppgiftKap5" Path="uppgiftKap5/uppgiftKap5.project" Active="Yes"/>
+  <Project Name="asciiDisplay" Path="asciiDisplay/asciiDisplay.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

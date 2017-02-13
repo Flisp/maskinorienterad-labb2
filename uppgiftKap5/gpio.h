@@ -10,15 +10,15 @@ typedef signed char sint8_t;
  * structuren som i boken s.67*/
 typedef struct gpio
 {
-    uint32_t moder; 
-    uint16_t otyper;
-    uint16_t unused0;  /* vi hoppar över 16 bits, som i figuren*/
-    uint32_t ospeedr; 
-    uint32_t pupdr; 
-    uint8_t idr_low;  
+    uint32_t moder;     /* Offset 0x00 */
+    uint16_t otyper;    /* Offset 0x04 */
+    uint16_t unused0;   /* vi hoppar över 16 bits, som i figuren*/
+    uint32_t ospeedr;   /* Offset 0x08 */
+    uint32_t pupdr;     /* Offset 0x0c */
+    uint8_t idr_low;    /* Offset 0x10 */
     uint8_t idr_high; 
     uint16_t unused1; 
-    uint8_t odr_low;
+    uint8_t odr_low;    /* Offset 0x14 */
     uint8_t odr_high; 
     uint16_t unused2; 
     uint32_t bsrr; 
@@ -27,6 +27,7 @@ typedef struct gpio
     uint32_t afrh;
     
 } GPIO; 
+
 
  /*alias pekare till a volatile struct gpio. Vid variabels deklaration, 
   * det skapas en pekare till en IO port som är volatile*/
@@ -53,4 +54,8 @@ Start: 		LDR	R6,=0x00000018
 #define RCC_GPIO_D 0x00000008
 /*bit 5*/ 
 #define RCC_GPIO_E 0x00000010 
-     
+/* bit 20, vet inte varför */
+#define RCC_CCMDATARAMEN 0x00100000
+    
+
+

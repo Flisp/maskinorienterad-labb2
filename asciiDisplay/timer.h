@@ -14,4 +14,6 @@ typedef volatile Sys_tick* systickptr;
 
 #define SYS_TICK (*((systickptr)0xe000e010))
 
-void delay_ns(uint32_t ns);
+void delay_250ns(void);
+void delay_micro(uint32_t us);
+void delay_ms(uint32_t ms);

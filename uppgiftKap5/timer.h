@@ -1,11 +1,9 @@
 typedef struct sys_tick
 {
-    //uint16_t ctrl_low; 
-    //uint16_t ctrl_high;
-    uint32_t ctrl; 
-    uint32_t load; 
-    uint32_t val; 
-    uint32_t calib;
+    uint32_t ctrl;  /* Offset 0x00 */
+    uint32_t load;  /* Offset 0x04 */
+    uint32_t val;   /* Offset 0x08 */
+    uint32_t calib; /* Offset 0x0c */
     
 }Sys_tick; 
 
